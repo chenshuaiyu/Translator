@@ -1,0 +1,65 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.example.chen.translator"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+    greendao {
+        schemaVersion 1 //数据库版本号
+        daoPackage 'com.example.chen.translator.data.dao' //这个是生成代码保存的包名
+        targetGenDir 'src/main/java' //保存到java代码路径
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+    implementation 'com.google.android.material:material:1.0.0-beta01'
+    implementation 'androidx.preference:preference:1.0.0-beta01'
+
+    implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
+
+//    butterknife
+    implementation 'com.jakewharton:butterknife:10.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+
+//    rxjava
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
+
+//    retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+//    Glide
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+
+//    GreenDao
+    implementation 'org.greenrobot:greendao:3.2.2'
+
+//    UI
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
+
+}
