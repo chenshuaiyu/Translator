@@ -44,4 +44,19 @@ public class Database {
     public List<Translation> getAllTranslation() {
         return mDaoSession.loadAll(Translation.class);
     }
+
+    public List<Translation> getCollectedTranslation() {
+        List<Translation> list = mDaoSession.queryBuilder(Translation.class).where(TranslationDao.Properties.IsCollected.eq(true)).list();
+        return list;
+    }
+
+    public void deleteTranslation(Translation translation) {
+        mDaoSession.delete(translation);
+    }
+
+    public void setCollected(Translation translation) {
+        Translation t = getTranslation(translation.getInput());
+        t.setIsCollected(translation.getIsCollected());
+        mDaoSession.update(t);
+    }
 }

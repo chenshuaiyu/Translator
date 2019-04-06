@@ -1,23 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="60dp"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/input"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/collect_linear_layout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:textColor="@color/black"
-        android:textSize="16sp"/>
+        android:layout_alignParentRight="true"
+        android:orientation="horizontal"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp">
 
-    <TextView
-        android:id="@+id/output"
+        <ImageView
+            android:id="@+id/collect"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_uncollect_grey"
+            android:layout_gravity="center_vertical"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="10dp"
-        android:textSize="16sp"/>
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/collect_linear_layout"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:text="good"/>
+
+        <TextView
+            android:id="@+id/output"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="16sp"
+            tools:text="好的"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_dark"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

@@ -18,9 +18,7 @@ public class ApiService {
         Retrofit retrofit = null;
         if (sApi == null) {
             retrofit = new Retrofit.Builder()
-//                    .baseUrl(Constants.BASE_URL)
-//                    .baseUrl(Constants.DAILY_PICTURE)
-                    .baseUrl(Constants.DAILY_ENGLISH)
+                    .baseUrl(Constants.YOUDAO_BASE_URL)
                     .client(new OkHttpClient())
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

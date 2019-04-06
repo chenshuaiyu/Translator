@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--<android.support.v7.preference.PreferenceCategory-->
-        <!--android:title="@string/basic_settings">-->
 
-        <!--<android.support.v7.preference.CheckBoxPreference-->
-            <!--android:title="@string/start_tap_translate"-->
-            <!--android:key="tap_translate"-->
-            <!--android:defaultValue="false"-->
-            <!--android:summary="@string/start_tap_translate_script" />-->
+    <PreferenceCategory
+        android:title="@string/settings">
 
-        <!--<android.support.v7.preference.CheckBoxPreference-->
-            <!--android:title="@string/enter_key"-->
-            <!--android:key="enter_key"-->
-            <!--android:defaultValue="false" />-->
+        <CheckBoxPreference
+            android:title="@string/theme_color"
+            android:key="key_theme_color"
+            android:defaultValue="false"
+            android:summary="@string/settings_thehe_color">
 
-        <!--<android.support.v7.preference.CheckBoxPreference-->
-            <!--android:title="@string/show_samples"-->
-            <!--android:key="samples"-->
-            <!--android:defaultValue="true" />-->
+        </CheckBoxPreference>
 
-    <!--</android.support.v7.preference.PreferenceCategory>-->
+    </PreferenceCategory>
+
 </PreferenceScreen>

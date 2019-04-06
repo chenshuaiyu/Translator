@@ -20,5 +20,4 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<Bing> getBingPicture() {
         return mRepository.getBingPicture();
     }
-
 }

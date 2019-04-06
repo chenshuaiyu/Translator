@@ -2,6 +2,8 @@ package com.example.chen.translator.ui.main;
 
 import com.bumptech.glide.Glide;
 import com.example.chen.translator.app.Constants;
+import com.example.chen.translator.ui.fragment.collect.CollectFragment;
+import com.example.chen.translator.ui.fragment.settings.SettingsFragment;
 import com.example.chen.translator.utils.Inject;
 import com.google.android.material.navigation.NavigationView;
 
@@ -21,6 +23,9 @@ import android.widget.ImageView;
 import com.example.chen.translator.R;
 import com.example.chen.translator.ui.fragment.home.TranslateFragment;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,7 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView mImageView;
 
+    private Fragment curFragment;
     private TranslateFragment mTranslateFragment;
+    private CollectFragment mCollectFragment;
+    private SettingsFragment mSettingsFragment;
+    private FragmentManager mFragmentManager;
+
     private MainViewModel mViewModel;
 
     @SuppressLint("WrongConstant")
@@ -44,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mViewModel = ViewModelProviders.of(this, Inject.getMainModelFactory()).get(MainViewModel.class);
+        mViewModel = ViewModelProviders.of(this, Inject.getModelFactory()).get(MainViewModel.class);
         mUnbinder = ButterKnife.bind(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -55,8 +65,16 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         mTranslateFragment = new TranslateFragment();
-        getSupportFragmentManager().beginTransaction()
+        mCollectFragment = new CollectFragment();
+        mSettingsFragment = new SettingsFragment();
+        curFragment = mTranslateFragment;
+        mFragmentManager = getSupportFragmentManager();
+        mFragmentManager.beginTransaction()
                 .add(R.id.fragment_container, mTranslateFragment)
+                .add(R.id.fragment_container, mCollectFragment)
+                .add(R.id.fragment_container, mSettingsFragment)
+                .hide(mCollectFragment)
+                .hide(mSettingsFragment)
                 .commit();
 
         mImageView = mNavigationView.getHeaderView(0).findViewById(R.id.image_view);
@@ -67,16 +85,24 @@ public class MainActivity extends AppCompatActivity {
 
         mNavigationView.setNavigationItemSelectedListener(
                 menuItem -> {
+                    FragmentTransaction transaction = mFragmentManager.beginTransaction().hide(curFragment);
                     switch (menuItem.getItemId()) {
                         case R.id.menu_home:
+                            if (curFragment != mTranslateFragment)
+                                curFragment = mTranslateFragment;
                             break;
                         case R.id.menu_collection:
+                            if (curFragment != mCollectFragment)
+                                curFragment = mCollectFragment;
                             break;
                         case R.id.menu_settings:
+                            if (curFragment != mSettingsFragment)
+                                curFragment = mSettingsFragment;
                             break;
                         default:
                             break;
                     }
+                    transaction.show(curFragment).commit();
                     mDrawerLayout.closeDrawer(Gravity.START);
                     return true;
                 });

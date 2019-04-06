@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">Translator</string>
-    <string name="translate">翻译</string>
+    <string name="app_name">翻译</string>
     <string name="input">点击输入文本</string>
     <string name="home">首页</string>
     <string name="collection">收藏</string>
     <string name="settings">设置</string>
     <string name="daily_english">英语每日一句</string>
+    <string name="theme_color">主题颜色</string>
+    <string name="settings_thehe_color">设置主题颜色</string>
 </resources>

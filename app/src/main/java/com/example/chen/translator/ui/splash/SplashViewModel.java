@@ -1,6 +1,7 @@
 package com.example.chen.translator.ui.splash;
 
 import com.example.chen.translator.data.Repository;
+import com.example.chen.translator.data.model.Bing;
 import com.example.chen.translator.data.model.DailyEnglish;
 
 import androidx.lifecycle.MutableLiveData;
@@ -19,5 +20,9 @@ public class SplashViewModel extends ViewModel {
 
     public MutableLiveData<DailyEnglish> getDailyEnglish() {
         return mRepository.getDailyEnglish();
+    }
+
+    public MutableLiveData<Bing> getBingPicture() {
+        return mRepository.getBingPicture();
     }
 }

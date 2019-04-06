@@ -10,6 +10,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Url;
 
 /**
  * Coder : chenshuaiyu
@@ -22,10 +23,10 @@ public interface Api {
                                       @Field("signType") String signType, @Field("curtime") String curtime,
                                       @Field("appKey") String appKey, @Field("salt") String salt, @Field("sign") String sign);
 
-    @GET("dsapi")
-    Observable<DailyEnglish> getDailtEnglish();
+    @GET()
+    Observable<DailyEnglish> getDailtEnglish(@Url String url);
 
-    @GET("HPImageArchive.aspx?format=js&idx=0&n=1")
-    Observable<Bing> getBingPicture();
+    @GET()
+    Observable<Bing> getBingPicture(@Url String url);
 
 }

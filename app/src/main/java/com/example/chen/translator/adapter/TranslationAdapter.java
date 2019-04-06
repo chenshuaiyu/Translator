@@ -22,5 +22,11 @@ public class TranslationAdapter extends BaseQuickAdapter<Translation, BaseViewHo
     protected void convert(BaseViewHolder helper, Translation item) {
         helper.setText(R.id.input, item.getInput())
                 .setText(R.id.output, item.getOutput());
+        if (item.getIsCollected()) {
+            helper.setImageResource(R.id.collect, R.drawable.ic_collect);
+        } else {
+            helper.setImageResource(R.id.collect, R.drawable.ic_uncollect_grey);
+        }
+        helper.addOnClickListener(R.id.collect);
     }
 }

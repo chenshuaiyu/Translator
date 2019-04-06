@@ -6,9 +6,7 @@ import com.example.chen.translator.data.model.Bing;
 import com.example.chen.translator.data.model.DailyEnglish;
 import com.example.chen.translator.data.model.Result;
 import com.example.chen.translator.data.network.Network;
-
 import java.util.List;
-
 import androidx.lifecycle.MutableLiveData;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -40,7 +38,7 @@ public class Repository {
         return sRepository;
     }
 
-    public MutableLiveData<Translation> getTranslation(String query) {
+    public MutableLiveData<Translation> getTranslationFromNet(String query) {
         MutableLiveData<Translation> liveData = new MutableLiveData<>();
         Translation translation = mDatabase.getTranslation(query);
         if (translation == null) {
@@ -58,7 +56,7 @@ public class Repository {
                             t.setInput(result.getQuery());
                             t.setOutput(result.getTranslation().get(0));
                             t.setIsCollected(false);
-                            liveData.postValue(t);
+                            liveData.setValue(t);
                         }
 
                         @Override
@@ -95,7 +93,7 @@ public class Repository {
 
                     @Override
                     public void onNext(Bing bing) {
-                        liveData.postValue(bing);
+                        liveData.setValue(bing);
                     }
 
                     @Override
@@ -121,7 +119,7 @@ public class Repository {
 
                     @Override
                     public void onNext(DailyEnglish dailyEnglish) {
-                        liveData.postValue(dailyEnglish);
+                        liveData.setValue(dailyEnglish);
                     }
 
                     @Override
@@ -133,5 +131,17 @@ public class Repository {
                     }
                 });
         return liveData;
+    }
+
+    public List<Translation> getCollectedTranslation() {
+        return mDatabase.getCollectedTranslation();
+    }
+
+    public void deleteTranslation(Translation translation) {
+        mDatabase.deleteTranslation(translation);
+    }
+
+    public void setCollected(Translation translation) {
+        mDatabase.setCollected(translation);
     }
 }

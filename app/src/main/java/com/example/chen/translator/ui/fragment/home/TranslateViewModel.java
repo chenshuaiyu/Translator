@@ -19,15 +19,23 @@ public class TranslateViewModel extends ViewModel {
         mRepository = repository;
     }
 
-    public MutableLiveData<Translation> getTranslation(String query){
-        return mRepository.getTranslation(query);
+    public MutableLiveData<Translation> getTranslationFromNet(String query){
+        return mRepository.getTranslationFromNet(query);
     }
 
     public void addTranslation(Translation translation) {
         mRepository.addTranslation(translation);
     }
 
+    public void deleteTranslation(Translation translation){
+        mRepository.deleteTranslation(translation);
+    }
+
     public List<Translation> getAllTranslation() {
         return mRepository.getAllTranslation();
+    }
+
+    public void setCollected(Translation translation) {
+        mRepository.setCollected(translation);
     }
 }

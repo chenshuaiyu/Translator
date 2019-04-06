@@ -45,10 +45,10 @@ public class Network {
     }
 
     public Observable<Bing> getBingPicture() {
-        return mApi.getBingPicture();
+        return mApi.getBingPicture(Constants.DAILY_PICTURE);
     }
 
     public Observable<DailyEnglish> getDailyEnglish() {
-        return mApi.getDailtEnglish();
+        return mApi.getDailtEnglish(Constants.DAILY_ENGLISH);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.chen.translator.ui.fragment.home;
 
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -8,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,11 +18,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.chen.translator.R;
 import com.example.chen.translator.adapter.TranslationAdapter;
 import com.example.chen.translator.data.dao.Translation;
 import com.example.chen.translator.utils.Inject;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -59,7 +65,7 @@ public class TranslateFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mViewModel = ViewModelProviders.of(this, Inject.getTranslateModelFactory()).get(TranslateViewModel.class);
+        mViewModel = ViewModelProviders.of(this, Inject.getModelFactory()).get(TranslateViewModel.class);
 
         translate = view.findViewById(R.id.translate);
         inputContent = view.findViewById(R.id.input_content);
@@ -71,31 +77,57 @@ public class TranslateFragment extends Fragment implements View.OnClickListener 
 
         mTranslationList = new ArrayList<>();
         mTranslationList = mViewModel.getAllTranslation();
+        Collections.reverse(mTranslationList);
 
         mAdapter = new TranslationAdapter(R.layout.item_translation, mTranslationList);
         mAdapter.setOnItemClickListener((adapter, view1, position) -> {
             curTranslation = mTranslationList.get(position);
+            mTranslationList.remove(position);
+            mTranslationList.add(0, curTranslation);
+            mAdapter.notifyDataSetChanged();
+
+            mViewModel.deleteTranslation(curTranslation);
+            curTranslation.setId(null);
+            mViewModel.addTranslation(curTranslation);
+
             inputContent.setText(curTranslation.getInput());
+            inputContent.setSelection(curTranslation.getInput().length());
             outputContent.setText(curTranslation.getOutput());
+        });
+        mAdapter.setOnItemChildClickListener((adapter, view12, position) -> {
+            Translation t = mTranslationList.get(position);
+            t.setIsCollected(!t.getIsCollected());
+            mAdapter.notifyDataSetChanged();
+            mViewModel.setCollected(t);
         });
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(mAdapter);
-
 
         translate.setOnClickListener(
                 v -> {
                     String q = inputContent.getText().toString();
                     if (!TextUtils.isEmpty(q)) {
-                        MutableLiveData<Translation> good = mViewModel.getTranslation(q);
-                        good.observe(this, translation -> {
-                                    curTranslation = translation;
-                                    mViewModel.addTranslation(curTranslation);
-                                    mTranslationList.add(curTranslation);
-                                    mAdapter.notifyDataSetChanged();
+                        Translation t = null;
+                        for (int i = 0; i < mTranslationList.size(); i++) {
+                            if (mTranslationList.get(i).getInput().equals(q))
+                                t = mTranslationList.get(i);
+                        }
+                        if (t != null) {
+                            mTranslationList.remove(t);
+                            mTranslationList.add(0, t);
+                            mViewModel.addTranslation(t);
+                        } else {
+                            MutableLiveData<Translation> liveData = mViewModel.getTranslationFromNet(q);
+                            liveData.observe(this, translation -> {
+                                        curTranslation = translation;
+                                        mViewModel.addTranslation(curTranslation);
 
-                                    outputContent.setText(translation.getOutput());
-                                }
-                        );
+                                        mTranslationList.add(0, curTranslation);
+                                        mAdapter.notifyDataSetChanged();
+                                        outputContent.setText(translation.getOutput());
+                                    }
+                            );
+                        }
                     }
                 }
         );
