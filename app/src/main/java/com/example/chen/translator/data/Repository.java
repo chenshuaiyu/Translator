@@ -1,5 +1,7 @@
 package com.example.chen.translator.data;
 
+import android.util.Log;
+
 import com.example.chen.translator.data.dao.Translation;
 import com.example.chen.translator.data.db.Database;
 import com.example.chen.translator.data.model.Bing;

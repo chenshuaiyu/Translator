@@ -7,4 +7,7 @@
     <string name="daily_english">英语每日一句</string>
     <string name="theme_color">主题颜色</string>
     <string name="settings_thehe_color">设置主题颜色</string>
+    <string name="copy">已复制</string>
+    <string name="share">分享</string>
+    <string name="no_collection">目前还没有收藏喔...</string>
 </resources>
