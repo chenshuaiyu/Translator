@@ -12,10 +12,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.chen.translator.R;
-import com.example.chen.translator.app.Constants;
 import com.example.chen.translator.ui.main.MainActivity;
 import com.example.chen.translator.utils.Inject;
 
+/**
+ * @author chenshuaiyu
+ */
 public class SplashActivity extends AppCompatActivity {
     @BindView(R.id.content) TextView content;
     @BindView(R.id.note) TextView note;
@@ -31,15 +33,11 @@ public class SplashActivity extends AppCompatActivity {
         mUnbinder = ButterKnife.bind(this);
         mViewModel = ViewModelProviders.of(this, Inject.getModelFactory()).get(SplashViewModel.class);
 
-        mViewModel.getBingPicture()
-                .observe(this, bing -> {
-                    Glide.with(this).load(Constants.BING_BASE_URL + bing.getImages().get(0).getUrl()).into(image);
-                });
-
         mViewModel.getDailyEnglish()
                 .observe(this, dailyEnglish -> {
                     content.setText(dailyEnglish.getContent());
                     note.setText(dailyEnglish.getNote());
+                    Glide.with(this).load(dailyEnglish.getPicture2()).into(image);
                 });
 
         new Handler().postDelayed(() -> {

@@ -1,7 +1,5 @@
 package com.example.chen.translator.data.network;
 
-import android.util.Log;
-
 import com.example.chen.translator.app.Constants;
 import com.example.chen.translator.data.model.Bing;
 import com.example.chen.translator.data.model.DailyEnglish;
@@ -9,14 +7,10 @@ import com.example.chen.translator.data.model.Result;
 import com.example.chen.translator.utils.MD5Helper;
 
 import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 /**
- * Coder : chenshuaiyu
- * Time : 2019/4/5 10:21
+ * @author : chenshuaiyu
+ * @date : 2019/4/5 10:21
  */
 public class Network {
     private static Network sNetwork;
@@ -29,8 +23,9 @@ public class Network {
     public static Network getInstance() {
         if (sNetwork == null) {
             synchronized (Network.class) {
-                if (sNetwork == null)
+                if (sNetwork == null) {
                     sNetwork = new Network();
+                }
             }
         }
         return sNetwork;
@@ -49,6 +44,6 @@ public class Network {
     }
 
     public Observable<DailyEnglish> getDailyEnglish() {
-        return mApi.getDailtEnglish(Constants.DAILY_ENGLISH);
+        return mApi.getDailyEnglish(Constants.DAILY_ENGLISH);
     }
 }

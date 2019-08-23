@@ -7,8 +7,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 /**
- * Coder : chenshuaiyu
- * Time : 2019/4/5 21:42
+ * @author : chenshuaiyu
+ * @date : 2019/4/5 21:42
  */
 public class MainViewModel extends ViewModel {
     private Repository mRepository;

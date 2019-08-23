@@ -10,8 +10,8 @@ import java.util.List;
 import androidx.annotation.Nullable;
 
 /**
- * Coder : chenshuaiyu
- * Time : 2019/4/5 21:05
+ * @author : chenshuaiyu
+ * @date : 2019/4/5 21:05
  */
 public class TranslationAdapter extends BaseQuickAdapter<Translation, BaseViewHolder> {
     public TranslationAdapter(int layoutResId, @Nullable List<Translation> data) {

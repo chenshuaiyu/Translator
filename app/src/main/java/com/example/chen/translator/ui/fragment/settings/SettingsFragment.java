@@ -8,8 +8,8 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 /**
- * Coder : chenshuaiyu
- * Time : 2019/4/4 14:11
+ * @author : chenshuaiyu
+ * @date : 2019/4/4 14:11
  */
 public class SettingsFragment extends PreferenceFragmentCompat {
 

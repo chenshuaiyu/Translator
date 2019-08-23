@@ -1,15 +1,13 @@
 package com.example.chen.translator.ui.splash;
 
 import com.example.chen.translator.data.Repository;
-import com.example.chen.translator.data.model.Bing;
 import com.example.chen.translator.data.model.DailyEnglish;
-
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 /**
- * Coder : chenshuaiyu
- * Time : 2019/4/5 23:19
+ * @author : chenshuaiyu
+ * @date : 2019/4/5 23:19
  */
 public class SplashViewModel extends ViewModel {
     private Repository mRepository;
@@ -20,9 +18,5 @@ public class SplashViewModel extends ViewModel {
 
     public MutableLiveData<DailyEnglish> getDailyEnglish() {
         return mRepository.getDailyEnglish();
-    }
-
-    public MutableLiveData<Bing> getBingPicture() {
-        return mRepository.getBingPicture();
     }
 }

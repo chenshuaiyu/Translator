@@ -7,8 +7,8 @@ import com.example.chen.translator.data.dao.DaoMaster;
 import com.example.chen.translator.data.dao.DaoSession;
 
 /**
- * Coder : chenshuaiyu
- * Time : 2019/4/5 10:26
+ * @author : chenshuaiyu
+ * @date : 2019/4/5 10:26
  */
 public class App extends Application {
     private static App sApp;

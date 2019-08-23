@@ -9,8 +9,8 @@ import com.example.chen.translator.data.dao.Translation;
 import java.util.List;
 
 /**
- * Coder : chenshuaiyu
- * Time : 2019/4/2 22:58
+ * @author : chenshuaiyu
+ * @date : 2019/4/2 22:58
  */
 public class TranslateViewModel extends ViewModel {
     private Repository mRepository;

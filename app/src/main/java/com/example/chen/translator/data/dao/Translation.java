@@ -5,8 +5,8 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
 
 /**
- * Coder : chenshuaiyu
- * Time : 2019/4/5 9:37
+ * @author : chenshuaiyu
+ * @date : 2019/4/5 9:37
  */
 @Entity
 public class Translation {

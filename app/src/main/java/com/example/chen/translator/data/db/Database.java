@@ -10,8 +10,8 @@ import com.example.chen.translator.data.dao.TranslationDao;
 import java.util.List;
 
 /**
- * Coder : chenshuaiyu
- * Time : 2019/4/5 10:21
+ * @author : chenshuaiyu
+ * @date : 2019/4/5 10:21
  */
 public class Database {
     private static Database sDatabase;
@@ -24,8 +24,9 @@ public class Database {
     public static Database getInstance() {
         if (sDatabase == null) {
             synchronized (Database.class) {
-                if (sDatabase == null)
+                if (sDatabase == null) {
                     sDatabase = new Database();
+                }
             }
         }
         return sDatabase;
@@ -33,10 +34,11 @@ public class Database {
 
     public Translation getTranslation(String query) {
         List<Translation> list = mDaoSession.queryBuilder(Translation.class).where(TranslationDao.Properties.Input.eq(query)).list();
-        if (list.size() == 0)
+        if (list.size() == 0) {
             return null;
-        else
+        } else {
             return list.get(0);
+        }
     }
 
     public void addTranslation(Translation translation) {

@@ -27,10 +27,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
+/**
+ * @author chenshuaiyu
+ */
 public class MainActivity extends AppCompatActivity {
     private Unbinder mUnbinder;
 
@@ -38,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
     @BindView(R.id.nav_view)
     NavigationView mNavigationView;
+
+    private ActionBar mActionBar;
 
     private ImageView mImageView;
 
@@ -59,10 +65,10 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(R.string.app_name);
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        mActionBar = getSupportActionBar();
+        mActionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        mActionBar.setDisplayHomeAsUpEnabled(true);
+        mActionBar.setTitle(R.string.app_name);
 
         mTranslateFragment = new TranslateFragment();
         mCollectFragment = new CollectFragment();
@@ -88,16 +94,22 @@ public class MainActivity extends AppCompatActivity {
                     FragmentTransaction transaction = mFragmentManager.beginTransaction().hide(curFragment);
                     switch (menuItem.getItemId()) {
                         case R.id.menu_home:
-                            if (curFragment != mTranslateFragment)
+                            if (curFragment != mTranslateFragment) {
                                 curFragment = mTranslateFragment;
+                            }
+                            mActionBar.setTitle(R.string.app_name);
                             break;
                         case R.id.menu_collection:
-                            if (curFragment != mCollectFragment)
+                            if (curFragment != mCollectFragment) {
                                 curFragment = mCollectFragment;
+                            }
+                            mActionBar.setTitle(R.string.collection);
                             break;
                         case R.id.menu_settings:
-                            if (curFragment != mSettingsFragment)
+                            if (curFragment != mSettingsFragment) {
                                 curFragment = mSettingsFragment;
+                            }
+                            mActionBar.setTitle(R.string.settings);
                             break;
                         default:
                             break;
@@ -121,6 +133,8 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(Gravity.START);
+                break;
+            default:
                 break;
         }
         return true;

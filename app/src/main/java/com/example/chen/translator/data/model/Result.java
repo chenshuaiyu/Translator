@@ -5,8 +5,8 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Coder : chenshuaiyu
- * Time : 2019/4/4 9:30
+ * @author : chenshuaiyu
+ * @date : 2019/4/4 9:30
  */
 public class Result {
 

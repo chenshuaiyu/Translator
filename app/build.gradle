@@ -40,26 +40,25 @@ dependencies {
 
     implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
 
-//    butterknife
+    // Butterknife
     implementation 'com.jakewharton:butterknife:10.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
 
-//    rxjava
+    // Rxjava
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
 
-//    retrofit
+    // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
 
-//    Glide
+    // Glide
     implementation 'com.github.bumptech.glide:glide:4.9.0'
 
-//    GreenDao
+    // GreenDao
     implementation 'org.greenrobot:greendao:3.2.2'
 
-//    UI
+    // UI
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
-
 }

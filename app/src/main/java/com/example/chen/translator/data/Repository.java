@@ -14,8 +14,8 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Coder : chenshuaiyu
- * Time : 2019/4/5 10:20
+ * @author : chenshuaiyu
+ * @date : 2019/4/5 10:20
  */
 public class Repository {
     private static Repository sRepository;

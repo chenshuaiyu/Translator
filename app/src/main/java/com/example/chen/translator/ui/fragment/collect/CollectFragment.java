@@ -10,21 +10,24 @@ import com.example.chen.translator.R;
 import com.example.chen.translator.adapter.TranslationAdapter;
 import com.example.chen.translator.data.dao.Translation;
 import com.example.chen.translator.utils.Inject;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * Coder : chenshuaiyu
- * Time : 2019/4/5 22:57
+ * @author : chenshuaiyu
+ * @date : 2019/4/5 22:57
  */
 public class CollectFragment extends Fragment {
     @BindView(R.id.recycler_view)
@@ -88,9 +91,10 @@ public class CollectFragment extends Fragment {
     }
 
     private void setNoCollection() {
-        if (mTranslationList.size() == 0)
+        if (mTranslationList.size() == 0) {
             mNoCollection.setVisibility(View.VISIBLE);
-        else
+        } else {
             mNoCollection.setVisibility(View.GONE);
+        }
     }
 }

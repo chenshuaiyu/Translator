@@ -8,8 +8,8 @@ import java.util.List;
 import androidx.lifecycle.ViewModel;
 
 /**
- * Coder : chenshuaiyu
- * Time : 2019/4/6 9:45
+ * @author : chenshuaiyu
+ * @date : 2019/4/6 9:45
  */
 public class CollectViewModel extends ViewModel {
     private Repository mRepository;

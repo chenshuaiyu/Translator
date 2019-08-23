@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 /**
- * Coder : chenshuaiyu
- * Time : 2019/4/6 9:34
+ * @author : chenshuaiyu
+ * @date : 2019/4/6 9:34
  */
 public class ModelFactory implements ViewModelProvider.Factory {
     private Repository mRepository;
@@ -25,13 +25,13 @@ public class ModelFactory implements ViewModelProvider.Factory {
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         T t = null;
-        if (modelClass == SplashViewModel.class) {
+        if (modelClass.isAssignableFrom(SplashViewModel.class)) {
             t = (T) new SplashViewModel(mRepository);
-        } else if (modelClass == MainViewModel.class) {
+        } else if (modelClass.isAssignableFrom(MainViewModel.class)) {
             t = (T) new MainViewModel(mRepository);
-        } else if (modelClass == TranslateViewModel.class) {
+        } else if (modelClass.isAssignableFrom(TranslateViewModel.class)) {
             t = (T) new TranslateViewModel(mRepository);
-        } else if (modelClass == CollectViewModel.class) {
+        } else if (modelClass.isAssignableFrom(CollectViewModel.class)) {
             t = (T) new CollectViewModel(mRepository);
         }
         return t;

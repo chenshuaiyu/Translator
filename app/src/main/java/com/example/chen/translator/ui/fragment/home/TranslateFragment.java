@@ -42,8 +42,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Coder : chenshuaiyu
- * Time : 2019/4/4 10:51
+ * @author : chenshuaiyu
+ * @date : 2019/4/4 10:51
  */
 public class TranslateFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.translate)
@@ -116,8 +116,9 @@ public class TranslateFragment extends Fragment implements View.OnClickListener 
                     if (!TextUtils.isEmpty(q)) {
                         Translation t = null;
                         for (int i = 0; i < mTranslationList.size(); i++) {
-                            if (mTranslationList.get(i).getInput().equals(q))
+                            if (mTranslationList.get(i).getInput().equals(q)) {
                                 t = mTranslationList.get(i);
+                            }
                         }
                         if (t != null) {
                             curTranslation = t;
@@ -184,7 +185,9 @@ public class TranslateFragment extends Fragment implements View.OnClickListener 
         mAdapter.setOnItemChildClickListener((adapter, view12, position) -> {
             Translation t = mTranslationList.get(position);
             t.setIsCollected(!t.getIsCollected());
-            setCollectImageView(t);
+            if (t == curTranslation) {
+                setCollectImageView(curTranslation);
+            }
             mAdapter.notifyDataSetChanged();
             mViewModel.setCollected(t);
         });

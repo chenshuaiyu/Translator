@@ -3,8 +3,8 @@ package com.example.chen.translator.data.model;
 import java.util.List;
 
 /**
- * Coder : chenshuaiyu
- * Time : 2019/4/4 15:17
+ * @author : chenshuaiyu
+ * @date : 2019/4/4 15:17
  */
 public class Bing {
 

@@ -8,8 +8,8 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Coder : chenshuaiyu
- * Time : 2019/4/4 8:50
+ * @author : chenshuaiyu
+ * @date : 2019/4/4 8:50
  */
 public class ApiService {
     private static Api sApi;
